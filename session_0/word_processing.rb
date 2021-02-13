@@ -2,13 +2,17 @@
 # any non-lower case alphabet (A..Z) to corresponding lower case
 # alphabet
 def lower_case(words)
-  raise NotImplementedError # TODO
+  final = Array.new
+  words.each do |word|
+    final << word.downcase
+  end
+  return final
 end
 
 # Similar to `lower_case`, this function modifies the array in-place
 # and does not return any value.
 def lower_case!(words)
-  raise NotImplementedError # TODO
+  words.map! { |e| e.downcase  }
 end
 
 # Given a prefix and an array of words, return an array containing
@@ -18,7 +22,13 @@ end
 # words_with_prefix('apple', ['apple', 'ball', 'applesauce']) would
 # return the words 'apple' and 'applesauce'.
 def words_with_prefix(prefix, words)
-  raise NotImplementedError # TODO
+  final = Array.new
+  words.each do |word|
+    if word.start_with?(prefix)
+      final << word
+    end
+  end
+  return final
 end
 
 # The similarity score between two words is defined as the length of
@@ -30,15 +40,44 @@ end
 #   the prefix
 # - similarity of (applesauce, apple) is 5 as 'apple' is the largest
 #   common prefix.
-# 
+#
 # The function `similarity_score` takes two words and returns the
 # similarity score (an integer).
 def similarity_score(word_1, word_2)
-  raise NotImplementedError # TODO
+  len1 = word_1.length
+  len2 = word_2.length
+  len = 0
+  if (len1 > len2)
+    len = len2
+  else
+    len = len1
+  end
+  score = 0
+  (0..len-1).each do |i|
+    if (word_1[i] == word_2[i])
+      score = score + 1
+    else
+      break
+    end
+  end
+  return score
 end
 
 # Given a chosen word and an array of words, return an array of word(s)
 # with the maximum similarity score in the order they appear.
 def most_similar_words(chosen_word, words)
-  raise NotImplementedError # TODO
+  max_score = 0
+  answer = Array.new
+  words.each do |word|
+    score = similarity_score(chosen_word, word)
+    if score > max_score
+      max_score = score
+    end
+  end
+  words.each do |word|
+    if (similarity_score(chosen_word, word) == max_score)
+      answer << word
+    end
+  end
+  return answer
 end

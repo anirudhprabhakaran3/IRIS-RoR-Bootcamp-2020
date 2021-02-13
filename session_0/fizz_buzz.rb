@@ -29,7 +29,7 @@
 # For example, fizz_buzz(n: 6, x: 2, y: 3) should return the following:
 # ["1", "Fizz", "Buzz", "Fizz", "5", "FizzBuzz"]
 #
-# What happens if the function is called by x (or y) = 0 or negative? 
+# What happens if the function is called by x (or y) = 0 or negative?
 #
 # The divisiblity by zero is not defined and neither do the little
 # children know how to divide by negative numbers.
@@ -37,5 +37,19 @@
 # We will raise an `ArgumentError` exception to let the caller know that
 # their function arguments were incorrect.
 def fizz_buzz(n:, x: 3, y: 5)
-  raise NotImplementedError # TODO
+  raise ArgumentError if x <= 0 or y <= 0 or n < 0
+  arr = Array.new
+  number = 1
+  1.upto(n) do |a|
+    if a % x == 0 and a % y == 0
+      arr << "FizzBuzz"
+    elsif a % y == 0
+      arr << "Buzz"
+    elsif a % x == 0
+      arr << "Fizz"
+    else
+      arr << a.to_s
+    end
+  end
+  return arr
 end
