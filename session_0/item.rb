@@ -48,7 +48,7 @@ class Item
   # should be zero.
   def self.stock_price_by_category(items)
     stock_price = {}
-    1.upto(Item::CATEGORIES.count) {|x| stock_price[x] = 0}
+    Item::CATEGORIES.each {|key, value| stock_price[key] = 0}
     items.each do |item|
       stock_price[item.category_id] = stock_price[item.category_id] + item.current_price * item.quantity
     end
