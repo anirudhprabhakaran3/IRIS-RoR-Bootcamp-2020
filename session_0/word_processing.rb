@@ -2,11 +2,7 @@
 # any non-lower case alphabet (A..Z) to corresponding lower case
 # alphabet
 def lower_case(words)
-  final = Array.new
-  words.each do |word|
-    final << word.downcase
-  end
-  return final
+  return words.map {|word| word.downcase}
 end
 
 # Similar to `lower_case`, this function modifies the array in-place
@@ -22,12 +18,7 @@ end
 # words_with_prefix('apple', ['apple', 'ball', 'applesauce']) would
 # return the words 'apple' and 'applesauce'.
 def words_with_prefix(prefix, words)
-  final = Array.new
-  words.each do |word|
-    if word.start_with?(prefix)
-      final << word
-    end
-  end
+  final = words.select {|word| word.start_with?(prefix)}
   return final
 end
 
@@ -67,17 +58,16 @@ end
 # with the maximum similarity score in the order they appear.
 def most_similar_words(chosen_word, words)
   max_score = 0
-  answer = Array.new
+  answer = []
   words.each do |word|
     score = similarity_score(chosen_word, word)
-    if score > max_score
+    if (score > max_score)
       max_score = score
-    end
-  end
-  words.each do |word|
-    if (similarity_score(chosen_word, word) == max_score)
+      answer = []
+      answer << word
+    elsif (score == max_score)
       answer << word
     end
   end
-  return answer
+  return answer  
 end

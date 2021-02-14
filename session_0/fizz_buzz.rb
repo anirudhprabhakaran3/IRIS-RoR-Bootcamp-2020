@@ -37,11 +37,10 @@
 # We will raise an `ArgumentError` exception to let the caller know that
 # their function arguments were incorrect.
 def fizz_buzz(n:, x: 3, y: 5)
-  raise ArgumentError if x <= 0 or y <= 0 or n < 0
-  arr = Array.new
-  number = 1
+  raise ArgumentError if x <= 0 || y <= 0 || n < 0
+  arr = []
   1.upto(n) do |a|
-    if a % x == 0 and a % y == 0
+    if a % x == 0 && a % y == 0
       arr << "FizzBuzz"
     elsif a % y == 0
       arr << "Buzz"
