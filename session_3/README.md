@@ -136,7 +136,7 @@ once you are familiar with Rails and authentication mechanisms.
 
 Authorization restricts what resources a given user is allowed to
 access. For example: we might allow users to delete their own articles
-as well as adminstrators to delete any article. 
+as well as adminstrators to delete any article.
 
 We will be using [CanCanCan](https://github.com/CanCanCommunity/cancancan),
 an authorization gem to keep the process simple.
@@ -254,7 +254,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email)
+    user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_url, notce: 'Logged in!'
@@ -366,10 +366,10 @@ end
   <body>
     <% if current_user %>
       Logged in as <%= current_user.email %>
-      <%= link_to 'Log Out', logout_path %>
+      <%= link_to 'Log Out', logout_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign Up', signup_path %>
-      <%= link_to 'Log In', login_path, method: :delete %>
+      <%= link_to 'Log In', login_path %>
     <% end %>
   </body>
 
@@ -500,7 +500,7 @@ class Ability
   def initialize(user)
     # All users
     can :index, Article
-    
+
     # Can read public articles
     can :show, Article, public: true
 
