@@ -20,7 +20,7 @@
         <td><%= article.tags %></td>
         <td><%= article.topic %></td>
         <td><%= article.content %></td>
-        <% if can? :show, Article, public: true %>
+        <% if can? :show, Article %>
           <td><%= link_to 'Show', article %></td>
         <% end %>
         <% if can? :edit, Article %>

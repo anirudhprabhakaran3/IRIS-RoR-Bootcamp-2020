@@ -1,24 +1,30 @@
-# README
+# Session 3
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Changes done
+After login and logout, we are automatically redirected to `root_url` i.e. the homepage, so that we can see the articles list. After login, the options to make a new article, edit and delete old ones are also visible.
 
-Things you may want to cover:
+## Sign Up
 
-* Ruby version
+![alt text](Screenshots/Signup.png "Signup")
 
-* System dependencies
+![alt text](Screenshots/Post_Signup.png "Post Signup")
 
-* Configuration
+## Login
 
-* Database creation
+![alt text](Screenshots/Login.png "Login")
 
-* Database initialization
+![alt text](Screenshots/Post_Login.png "Post Login")
 
-* How to run the test suite
+## Articles
 
-* Services (job queues, cache servers, search engines, etc.)
+![alt text](Screenshots/New_Article.png "New Article")
 
-* Deployment instructions
+![alt text](Screenshots/View_Article.png "View Article")
 
-* ...
+## Users
+
+![alt text](Screenshots/Users.png "Users")
+
+## Logout
+
+![alt text](Screenshots/Post_Logout.png "Post Logout")
