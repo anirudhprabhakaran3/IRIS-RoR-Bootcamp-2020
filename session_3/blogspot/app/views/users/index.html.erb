@@ -17,8 +17,16 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :manage, User %>
+          <% if current_user.email == user.email || current_user.admin %>
+            <td><%= link_to 'Edit', edit_user_path(user) %></td>
+          <% end %>
+        <% end %>
+        <% if can? :manage, User %>
+          <% if current_user.email == user.email || current_user.admin %>
+            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +34,6 @@
 
 <br>
 
+<% if current_user.admin %>
 <%= link_to 'New User', new_user_path %>
+<% end %>

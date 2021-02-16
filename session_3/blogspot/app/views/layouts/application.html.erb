@@ -11,7 +11,9 @@
   </head>
 
   <body>
-
+    <%= link_to 'Home', root_url %>
+    <%= link_to 'Users', users_path %>
+    <br>
     <% if current_user %>
       Logged in as <%= current_user.email %>
       <%= link_to 'Log Out', logout_path, method: :delete %>
@@ -20,6 +22,13 @@
       <%= link_to 'Log In', login_path %>
     <% end %>
 
+    <% if current_user %>
+      <% if current_user.admin %>
+        <h1>Admin Access</h1>
+      <% end %>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

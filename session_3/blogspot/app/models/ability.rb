@@ -33,8 +33,16 @@ class Ability
 
     can :index, Article
     can :show, Article, public: true
+    can :index, User
+    can :show, User
+    can :new, User
 
     if user.present?
+      
+      if user.admin
+        can :manage, :all
+      end
+
       can :show, Article, public: false
 
       can :new, Article
@@ -44,7 +52,10 @@ class Ability
       can :update, Article, user_id: user.id
       can :destroy, Article, user_id: user.id
 
+      can :manage, User, email: user.email
     end
+
+
 
 
   end
