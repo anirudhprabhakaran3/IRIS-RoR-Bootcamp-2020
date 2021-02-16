@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Articles</h1>
+
+<% @articles.each do |article| %>
+  <%= render partial: 'card', locals: {article: article} %>
+<% end %>

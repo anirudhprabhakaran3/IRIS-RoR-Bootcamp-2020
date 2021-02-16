@@ -1,0 +1,20 @@
+  <div class="card mb-2">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= article.title %>
+      </h3>
+
+      <h5 class="card-subtitle mb-2 text-muted">
+        <%= article.topic %>
+      </h5>
+
+      <p class="card-text">
+        <%= article.content[0, 80] %>...
+      </p>
+
+      <% if can? :show, Article %>
+        <%= link_to 'Read More', article, class: "text-white btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
