@@ -9,6 +9,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    if !@article.public && @article.user_id == current_user.id
+      if current_user.private_articles_remaining == 0
+        flash[:notice] = "You have used up your free articles."
+        redirect_to root_url
+      else
+        format.html { redirect_to @article, notice: "You have #{current_user.private_articles_remaining} articles left." }
+      end
+    end
   end
 
   # GET /articles/new
