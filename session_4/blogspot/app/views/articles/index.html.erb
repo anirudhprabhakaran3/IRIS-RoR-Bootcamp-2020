@@ -1,7 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1 class="text-center">Articles</h1>
 
-<% @articles.each do |article| %>
-  <%= render partial: 'card', locals: {article: article} %>
-<% end %>
+  <h1 class="text-center">Articles</h1>
+  <div class="card-columns">
+    <% @articles.each do |article| %>
+      <%= render partial: 'card', locals: {article: article} %>
+    <% end %>
+  </div>
+
+</div>

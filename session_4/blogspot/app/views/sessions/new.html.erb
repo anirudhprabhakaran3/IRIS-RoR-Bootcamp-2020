@@ -1,20 +1,20 @@
-<p id="alert"> <%= alert %> </p>
+<div class="container">
+  <h1>Login</h1>
 
-<h1>Login</h1>
+  <%= form_with url: sessions_path do |f| %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
 
-<%= form_with url: sessions_path do |f| %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
+    <div class="actions">
+      <%= f.submit 'Login' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit 'Login' %>
-  </div>
-
-<% end %>
+  <% end %>
+</div>

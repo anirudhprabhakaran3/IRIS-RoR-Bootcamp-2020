@@ -1,5 +1,8 @@
-  <div class="card mb-2">
+  <div class="card mb-2" style="width: 18rem;">
     <div class="card-body">
+      <% if article.image.attached? %>
+      <img src="<%=(url_for(article.image))%>" class="card-img-top" alt="...">
+      <% end %>
       <h3 class="card-title">
         <%= article.title %>
       </h3>
@@ -13,7 +16,7 @@
       </p>
 
       <% if can? :show, Article %>
-        <%= link_to 'Read More', article, class: "text-white btn btn-primary" %>
+        <%= link_to 'Read More', article, class: "text-white btn btn-primary stretched-link" %>
       <% end %>
 
     </div>

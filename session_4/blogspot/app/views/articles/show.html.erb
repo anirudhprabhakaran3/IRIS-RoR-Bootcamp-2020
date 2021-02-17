@@ -1,24 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% if @article.image.attached? %>
+  <img src="<%=(url_for(@article.image))%>" alt="Article Image" class="img-fluid" style="height:60vh; width: 100vw; object-fit:cover; display: block; margin: auto;">
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
 
-<p>
-  <strong>Tags:</strong>
-  <%= @article.tags %>
-</p>
+<div class="container">
+  <p class="h5"><small class="text-muted"> <%= @article.topic %> - <%= @article.updated_at.to_date %> </small></p>
+  <h1 class="display-2"> <%= @article.title %> </h1>
+  <p class="h5"> <%= @article.content %> </p>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @article.topic %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<p class="h3">
+    <% if can? :edit, Article %>
+      <%= link_to 'Edit', edit_article_path(@article) %>
+    <% end %>
+    <%= link_to 'Back', articles_path %>
+  </p>
+</div>
